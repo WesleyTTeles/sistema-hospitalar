@@ -1,7 +1,7 @@
 from cadastrar import cadastrar_dados
 
 def menu_sistema(opcao_menu):
-
+                      
     match opcao_menu:
         case 1:
             cadastrar_dados()

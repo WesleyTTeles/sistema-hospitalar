@@ -14,7 +14,7 @@ def conexao_mysql(host_name, user_name, user_password, db_name):
             password = user_password,
             database = db_name
         )
-        print('Conexao Realizada com Sucesso!')
+        #print('Conexao Realizada com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
     return conexao

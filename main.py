@@ -25,7 +25,7 @@ Bem vindo ao StarMed Seu Sistema Hospitalar
         while opcao_menu != 5:
                 menu_sistema(opcao_menu)
         
-                opcao_menu = input('\n' + """
+                opcao_menu = int(input('\n' + """
 Digite a Opçao Desejada: 
 
 1 - Cadastrar Dados
@@ -34,7 +34,7 @@ Digite a Opçao Desejada:
 4 - Relatórios
 5 - Sair 
 
-""")
+"""))
         print('Obrigado por usar StarMed! Fechando o programa... ..')
 
 main()

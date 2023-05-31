@@ -35,10 +35,11 @@ def cadastrar_medico():
     bairro = input('Nome do Bairro: ')
     cidade = input('Nome da Cidade: ')
     cep = input('Cep: ')
-    
+    cnpj_hospital = input('Informe o CNPJ do Hospital de Atuacao: ')
+
     query = f'''
-        INSERT INTO Medico (crm, cpf, nome, rua, bairro, cidade, cep)
-        VALUES ('{crm}', '{cpf}', '{nome}', '{rua}', '{bairro}', '{cidade}', '{cep}')
+        INSERT INTO Medico (crm, cpf, nome, rua, bairro, cidade, cep, cnpj_hospital)
+        VALUES ('{crm}', '{cpf}', '{nome}', '{rua}', '{bairro}', '{cidade}', '{cep}' , '{cnpj_hospital}')
     '''
 
     conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
