@@ -1,4 +1,5 @@
 from cadastrar import cadastrar_dados
+from alterar import alterar_dados
 
 def menu_sistema(opcao_menu):
                       
@@ -6,7 +7,7 @@ def menu_sistema(opcao_menu):
         case 1:
             cadastrar_dados()
         case 2:
-            pass
+            alterar_dados()
         case 3:
             pass
         case 4:
