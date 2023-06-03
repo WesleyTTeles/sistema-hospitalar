@@ -1,4 +1,4 @@
-from cadastrar import cadastrar_dados
+from cadastrar import *
 from alterar import alterar_dados
 
 def menu_sistema(opcao_menu):
@@ -10,7 +10,14 @@ def menu_sistema(opcao_menu):
             alterar_dados()
         case 3:
             pass
+            #deletar_dados()
         case 4:
+            associar_medico_hospital()
+        case 5:
+            associar_paciente_medico()
+        case 6:
+            associar_enfermeiro_hospital()
+        case 7:
             opcao_relatorio = int(input("""
 Escolha Qual Opção Deseja Listar:
 
@@ -20,6 +27,7 @@ Escolha Qual Opção Deseja Listar:
 4 - Listar Pacientes que moram no Centro de Aracaju
 5 - Listar médico e seus Telefones
 6 - Listar corpo clínico
-"""))
-        case 5:
+"""))       
+        case 8:
             print('Obrigado por usar StarMed! Fechando o programa... ..')        
+            quit()

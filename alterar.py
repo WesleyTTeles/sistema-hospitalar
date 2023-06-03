@@ -8,14 +8,14 @@ load_dotenv()
 def alterar_hospital():
     print('Favor Informe qual dado do Hospital deseja Atualizar:\n')
 
-    dado_hospital = input('Cnpj | Nome | Rua | Bairro | Cidade | Cep | Telefone: \n').lower()
-    if dado_hospital not in ['cnpj', 'nome', 'rua', 'bairro', 'cidade', 'cep', 'telefone']:
+    dado_hospital = input('Cnpj | Nome | Rua | Bairro | Cidade | Cep | Telefone: \n').upper()
+    if dado_hospital not in ['CNPJ', 'NOME', 'RUA', 'BAIRRO', 'CIDADE', 'CEP', 'TELEFONE']:
         print('Dado informado nao Localizado')
         alterar_hospital()
     else:
         dado_hospital_atualizado = input('Para qual nome deseja atualizar? ')
         query = f'''
-            UPDATE Hospital SET {dado_hospital} = '{dado_hospital_atualizado}'
+            UPDATE HOSPITAL SET {dado_hospital} = '{dado_hospital_atualizado}'
         '''
 
     try:
@@ -30,14 +30,14 @@ def alterar_hospital():
 def alterar_medico():
     print('Favor Informe qual dado do Médico deseja Atualizar:\n')
 
-    dado_medico = input('Crm | Cpf | Nome | Rua | Bairro | Cidade | Cep | Cnpj_hospital: \n').lower()
-    if dado_medico not in ['crm', 'cpf', 'nome', 'rua', 'bairro', 'cidade', 'cep', 'cnpj_hospital']:
+    dado_medico = input('Crm | Cpf | Nome | Rua | Bairro | Cidade | Cep: \n').upper()
+    if dado_medico not in ['CRM', 'CPF', 'NOME', 'RUA', 'BAIRRO', 'CIDADE', 'CEP']:
         print('Dado informado nao Localizado')
         alterar_medico()
     else:
         dado_medico_atualizado = input('Para qual nome deseja atualizar? ')
         query = f'''
-            UPDATE Medico SET {dado_medico} = '{dado_medico_atualizado}'
+            UPDATE MEDICO SET {dado_medico} = '{dado_medico_atualizado}'
         '''
 
     try:
@@ -53,14 +53,14 @@ def alterar_medico():
 def alterar_enfermeiro():
     print('Favor Informe qual dado do Enfermeiro(a) deseja Atualizar:\n')
 
-    dado_enfermeiro = input('Corem | Cpf | Nome | Rua | Bairro | Cidade | Cep Cnpj_hospital | Crm_medico: \n').lower()
-    if dado_enfermeiro not in ['corem','cpf','nome','rua','bairro','cidade','cep', 'cnpj_hospital', 'crm_medico']:
+    dado_enfermeiro = input('Corem | Cpf | Nome | Rua | Bairro | Cidade | Cep:  \n').upper()
+    if dado_enfermeiro not in ['COREN','CPF','NOME','RUA','BAIRRO','CIDADE','CEP']:
         print('Dado informado nao Localizado')
         alterar_enfermeiro()
     else:
         dado_enfermeiro_atualizado = input('Para qual nome deseja atualizar? ')
         query = f'''
-            UPDATE Enfermeiro SET {dado_enfermeiro} = '{dado_enfermeiro_atualizado}'
+            UPDATE ENFERMEIRO SET {dado_enfermeiro} = '{dado_enfermeiro_atualizado}'
         '''
 
     try:
@@ -76,14 +76,14 @@ def alterar_enfermeiro():
 def alterar_paciente():
     print('Favor Informe qual dado do Paciente deseja Atualizar:\n')
 
-    dado_paciente = input('Cpf | Rg | Nome | Rua | Bairro | Cidade | Cep | Crm_medico: \n').lower()
-    if dado_paciente not in ['cpf','rg','nome','rua','bairro','cidade','cep', 'crm_medico']:
+    dado_paciente = input('Cpf | Rg | Nome | Rua | Bairro | Cidade | Cep: \n').upper()
+    if dado_paciente not in ['CPF','RG','NOME','RUA','BAIRRO','CIDADE','CEP']:
         print('Dado informado nao Localizado')
-        alterar_enfermeiro()
+        alterar_paciente()
     else:
         dado_paciente_atualizado = input('Para qual nome deseja atualizar? ')
         query = f'''
-            UPDATE Enfermeiro SET {dado_paciente} = '{dado_paciente_atualizado}'
+            UPDATE PACIENTE SET {dado_paciente} = '{dado_paciente_atualizado}'
         '''
 
     try:
