@@ -2,6 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
+from consultar_dados import *
 from conexao_db import conexao_mysql
 load_dotenv()
 
@@ -162,7 +163,7 @@ def cadastrar_paciente():
         print(f"Error: '{err}'")
 
 def cadastrar_associar_especialidade():
-    
+    consultar_medico()
     especialidade = input('Informe a Especialidade do Médico: ')
     crm_do_medico = input('Informe o CRM do Medico para Associação: ')
     
@@ -181,7 +182,7 @@ def cadastrar_associar_especialidade():
         print(f"Error: '{err}'")
 
 def cadastrar_associar_numero_medico():
-
+    consultar_medico()
     telefone = input('Informe o número de Telefone do Médico: ')
     crm_do_medico = input('Informe o CRM do Medico para Associação: ')
     
@@ -200,8 +201,10 @@ def cadastrar_associar_numero_medico():
         print(f"Error: '{err}'")
 
 def associar_medico_hospital():
-
+    consultar_hospital()
     cnpj_do_hospital = input('Informe o numero do CNPJ do Hospital em que o Médico Trabalha: ')
+
+    consultar_medico()    
     crm_do_medico = input('Informe o CRM do Medico: ')
     
     query = f'''
@@ -219,8 +222,10 @@ def associar_medico_hospital():
         print(f"Error: '{err}'")
 
 def associar_paciente_medico():
-
+    consultar_paciente()
     cpf_paciente = input('Informe o CPF do Paciente: ')
+
+    consultar_medico()
     crm_do_medico = input('Informe o CRM do Medico para Associação: ')
     
     query = f'''
@@ -238,8 +243,10 @@ def associar_paciente_medico():
         print(f"Error: '{err}'")
 
 def associar_enfermeiro_hospital():
-
+    consultar_hospital()
     cnpj_do_hospital = input('Informe o numero do CNPJ do Hospital em que o Enfermeiro(a) Trabalha: ')
+    
+    consultar_enfermeiro()
     coren_enfermeiro = input('Informe o COREN do Enfermeiro(a) para Associação: ')
     
     query = f'''
@@ -256,8 +263,28 @@ def associar_enfermeiro_hospital():
     except Error as err:
         print(f"Error: '{err}'")
 
-def cadastrar_dados():
+def associar_medico_enfermeiro():
+    consultar_medico()
+    crm_medico = input('Informe o numero do CRM do Médico que ira Liderar o Enfermeiro(a): ')
+    
+    consultar_enfermeiro()
+    coren_enfermeiro = input('Informe o COREN do Enfermeiro(a) para Associação: ')
+    
+    query = f'''
+        INSERT INTO MEDICO_ENFERMEIRO (CRM_MEDICO, COREN_ENFERMEIRO)
+        VALUES ('{crm_medico}', '{coren_enfermeiro}');
+    '''
 
+    try:
+        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
+        cursor = conexao.cursor()
+        cursor.execute(query)
+        conexao.commit()
+        print('Enfermeiro(a) Associado com Sucesso!')
+    except Error as err:
+        print(f"Error: '{err}'")
+
+def cadastrar_dados():
     opcao_cadastro = int(input("""
 Escolha Qual Opção Deseja Cadastrar: 
 

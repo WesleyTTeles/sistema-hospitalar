@@ -72,7 +72,7 @@ query_paciente_medico = '''
 
 '''
 
-query_enfermeiro_medico = '''
+query_medico_enfermeiro = '''
     CREATE TABLE MEDICO_ENFERMEIRO (
     CRM_MEDICO   VARCHAR(11),
     COREN_ENFERMEIRO VARCHAR(11),
@@ -112,4 +112,4 @@ query_telefone_medico = '''
 
 conexao = conexao_mysql(host_name = getenv("host"), user_name = getenv("db_user"), user_password = getenv("password"), db_name = getenv("db_name"))
 cursor = conexao.cursor()
-cursor.execute(query_enfermeiro_medico)
+cursor.execute(query_medico_enfermeiro)

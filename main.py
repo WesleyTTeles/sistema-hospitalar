@@ -21,8 +21,9 @@ Bem vindo ao StarMed Seu Sistema Hospitalar
 4 - Associar Medico a Hospital
 5 - Associar Paciente a Médico
 6 - Associar Enfermeiro(a) a Hospital
-7 - Relatórios
-8 - Sair   
+7 - Associar Enfermeiro(a) à Médico
+8 - Relatórios
+9 - Sair   
 """)
         opcao_menu = int(input('Digite uma Opção Deseja: '))
         while opcao_menu != 8:
@@ -37,8 +38,9 @@ Digite a Opçao Desejada:
 4 - Associar Medico a Hospital
 5 - Associar Paciente a Médico
 6 - Associar Enfermeiro(a) a Hospital
-7 - Relatórios
-8 - Sair  
+7 - Associar Enfermeiro(a) à Médico
+8 - Relatórios
+9 - Sair  
 
 """))
         print('Obrigado por usar StarMed! Fechando o programa... ..')

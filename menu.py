@@ -18,6 +18,8 @@ def menu_sistema(opcao_menu):
         case 6:
             associar_enfermeiro_hospital()
         case 7:
+            associar_medico_enfermeiro()
+        case 8:
             opcao_relatorio = int(input("""
 Escolha Qual Opção Deseja Listar:
 
@@ -28,6 +30,6 @@ Escolha Qual Opção Deseja Listar:
 5 - Listar médico e seus Telefones
 6 - Listar corpo clínico
 """))       
-        case 8:
+        case 9:
             print('Obrigado por usar StarMed! Fechando o programa... ..')        
             quit()
