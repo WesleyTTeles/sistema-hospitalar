@@ -2,6 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
+from consultar_dados import *
 from conexao_db import conexao_mysql
 load_dotenv()
 
@@ -167,40 +168,82 @@ def alterar_paciente():
         print(f"Erro: {err}")
 
 def alterar_especialidade():
-
+    consultar_medico()
     crm_medico = input('Informe o CRM do Médico para ser Alterado: ')
-    consulta_crm = f"SELECT CRM FROM MEDICO WHERE CRM = '{crm_medico}'"
+    consulta_crm = f"SELECT ID_ESPECIALIDADE, ESPECIALIDADE FROM ESPECIALIDADE_MEDICO WHERE CRM_MEDICO = '{crm_medico}'"
 
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(consulta_crm)
-        resultado = cursor.fetchone()
-        if resultado:
-            
-            nova_especialidade = input('Informe a Especialidade: ')
-            query = f'''
-                UPDATE ESPECIALIDADE_MEDICO SET ESPECIALIDADE = '{nova_especialidade}'
-                WHERE CRM_MEDICO = '{crm_medico}'
-            '''
-            try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
-                cursor.execute(query)
-                conexao.commit()
-                print('Dados Atualizados com Sucesso!')
-            
-            except Error as err:
-                print(f"Error: '{err}'")
-        else:
-            print("CRM não encontrado na base de dados, Tente Novamente")
-            alterar_dados()
+        resultados = cursor.fetchall()
 
+        if resultados:
+            print(f'Foram Encontrado {len(resultados)} Especialidade Vinculado a esse Médico:\n')
+            for resultado in resultados:
+                id_especialidade, especialidade = resultado
+                print(f'ID: {id_especialidade}, Especialidade: {especialidade}')
+        else:
+            print('Especialidade não Localizado ou Nao existe Especialidade Cadastrada vinculado.')
+    
+    except Error as err:
+        print(f'Error: {err}')
+    
+    id_especialidade = input('\nInforme qual ID da Especialidade você deseja Alterar: ')
+    nova_especialidade = input('Informe a nova Especialidade: ')
+    query = f'''
+        UPDATE ESPECIALIDADE_MEDICO SET ESPECIALIDADE = '{nova_especialidade}'
+        WHERE ID_ESPECIALIDADE = '{id_especialidade}'
+        '''
+    try:
+        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
+        cursor = conexao.cursor()
+        cursor.execute(query)
+        conexao.commit()
+        conexao.close()
+        
+        print('Especialidade Alterado Com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
 
 def alterar_telefone():
-    pass
+
+    consultar_medico()
+    crm = input('Informe o CRM do médico: ')
+    consultar_telefone = f"SELECT ID_TELEFONE, TELEFONE FROM TELEFONE_MEDICO WHERE CRM_MEDICO = '{crm}'"
+    
+    try:
+        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
+        cursor = conexao.cursor()
+        cursor.execute(consultar_telefone)
+        resultados = cursor.fetchall()
+
+        if resultados:
+            print(f'Foram Encontrado {len(resultados)} Telefones Vinculado a esse Médico:\n')
+            for resultado in resultados:
+                id_telefone, telefone = resultado
+                print(f'ID: {id_telefone}, Telefone: {telefone}')
+        else:
+            print('Telefone não Localizado ou Nao existe Telefone Cadastrado vinculado.')
+    except Error as err:
+        print(f'Error: {err}')
+    
+    id_telefone = input('\nInforme qual ID do Telefone você deseja Alterar: ')
+    novo_numero = input('Informe o novo Numero de Telefone:')
+    query = f'''
+        UPDATE TELEFONE_MEDICO SET TELEFONE = '{novo_numero}'
+        WHERE ID_TELEFONE = '{id_telefone}'
+        '''
+    try:
+        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
+        cursor = conexao.cursor()
+        cursor.execute(query)
+        conexao.commit()
+        conexao.close()
+        
+        print('Telefone Alterado Com Sucesso!')
+    except Error as err:
+        print(f"Error: '{err}'")
 
 def alterar_dados():
 
