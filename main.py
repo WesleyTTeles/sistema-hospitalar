@@ -26,7 +26,7 @@ Bem vindo ao StarMed Seu Sistema Hospitalar
 9 - Sair   
 """)
         opcao_menu = int(input('Digite uma Opção Deseja: '))
-        while opcao_menu != 8:
+        while opcao_menu != 9:
                 menu_sistema(opcao_menu)
         
                 opcao_menu = int(input('\n' + """
