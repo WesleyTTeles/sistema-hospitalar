@@ -1,5 +1,5 @@
-from cadastrar import *
-from alterar import alterar_dados
+from cadastrar_dados import *
+from alterar_dados import alterar_dados
 from deletar_dados import deletar_dados
 
 def menu_sistema(opcao_menu):

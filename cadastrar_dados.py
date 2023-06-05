@@ -164,8 +164,8 @@ def cadastrar_paciente():
 
 def cadastrar_associar_especialidade():
     consultar_medico()
+    crm_do_medico = input('\nInforme o CRM do Medico para Adicionar uma Especialidade: ')
     especialidade = input('Informe a Especialidade do Médico: ')
-    crm_do_medico = input('Informe o CRM do Medico para Associação: ')
     
     query = f'''
         INSERT INTO ESPECIALIDADE_MEDICO (ESPECIALIDADE, CRM_MEDICO)
@@ -183,8 +183,8 @@ def cadastrar_associar_especialidade():
 
 def cadastrar_associar_numero_medico():
     consultar_medico()
+    crm_do_medico = input('\nInforme o CRM do Medico para que deseja Cadastrar o Telefone: ')
     telefone = input('Informe o número de Telefone do Médico: ')
-    crm_do_medico = input('Informe o CRM do Medico para Associação: ')
     
     query = f'''
         INSERT INTO TELEFONE_MEDICO (TELEFONE, CRM_MEDICO)
