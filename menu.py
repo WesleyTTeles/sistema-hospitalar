@@ -1,5 +1,6 @@
 from cadastrar import *
 from alterar import alterar_dados
+from deletar_dados import deletar_dados
 
 def menu_sistema(opcao_menu):
                       
@@ -9,8 +10,7 @@ def menu_sistema(opcao_menu):
         case 2:
             alterar_dados()
         case 3:
-            pass
-            #deletar_dados()
+            deletar_dados()
         case 4:
             associar_medico_hospital()
         case 5:

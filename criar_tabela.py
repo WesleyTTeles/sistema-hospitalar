@@ -69,6 +69,17 @@ query_paciente_medico = '''
     FOREIGN KEY (CPF_PACIENTE) REFERENCES PACIENTE(CPF),
     FOREIGN KEY (CRM_MEDICO) REFERENCES MEDICO(CRM)
 );
+
+'''
+
+query_enfermeiro_medico = '''
+    CREATE TABLE MEDICO_ENFERMEIRO (
+    CRM_MEDICO   VARCHAR(11),
+    COREN_ENFERMEIRO VARCHAR(11),
+    PRIMARY KEY (CRM_MEDICO, COREN_ENFERMEIRO),
+    FOREIGN KEY (CRM_MEDICO) REFERENCES MEDICO(CRM),
+    FOREIGN KEY (COREN_ENFERMEIRO) REFERENCES ENFERMEIRO(COREN)
+);
 '''
 
 query_hospital_enfermeiro = '''
@@ -101,4 +112,4 @@ query_telefone_medico = '''
 
 conexao = conexao_mysql(host_name = getenv("host"), user_name = getenv("db_user"), user_password = getenv("password"), db_name = getenv("db_name"))
 cursor = conexao.cursor()
-cursor.execute(query_telefone_medico)
+cursor.execute(query_enfermeiro_medico)
