@@ -25,11 +25,12 @@ Bem vindo ao StarMed Seu Sistema Hospitalar
 8 - Relatórios
 9 - Sair   
 """)
-        opcao_menu = int(input('Digite uma Opção Deseja: '))
-        while opcao_menu != 9:
-                menu_sistema(opcao_menu)
-        
-                opcao_menu = int(input('\n' + """
+        try:
+                opcao_menu = int(input('Digite uma Opção Deseja: '))
+                while opcao_menu != 9:
+                        menu_sistema(opcao_menu)
+                
+                        opcao_menu = int(input('\n' + """
 Digite a Opçao Desejada: 
 
 1 - Cadastrar Dados
@@ -41,8 +42,9 @@ Digite a Opçao Desejada:
 7 - Associar Enfermeiro(a) à Médico
 8 - Relatórios
 9 - Sair  
-
-"""))
-        print('Obrigado por usar StarMed! Fechando o programa... ..')
+        """))
+                print('Obrigado por usar StarMed! Fechando o programa... ..')
+        except ValueError:
+              print('\n!!!! Opção Inválida Fechando o programa... .. !!!!')
 
 main()
