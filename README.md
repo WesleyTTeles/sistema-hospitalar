@@ -1,3 +1,5 @@
+![Imagem do Sistema](https://user-images.githubusercontent.com/99696235/243837620-b65b3e8f-8443-4152-a166-e0a008605978.png)
+
 # Sistema Hospitalar
 
 Este é um repositório que contém um sistema hospitalar desenvolvido com o objetivo de praticar o CRUD utilizando a linguagem Python com Banco de Dados em MySQL, ele gerenciar informações em um ambiente hospitalar. O sistema foi criado por [Wesley T. Teles](https://github.com/WesleyTTeles) e é um projeto em constante desenvolvimento.
