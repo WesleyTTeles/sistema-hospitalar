@@ -2,12 +2,12 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
-from consultar_dados import *
-from conexao_db import conexao_mysql
+from src.consultar_dados import *
+from src.conexao_db import conexao_mysql
 load_dotenv()
 
 def alterar_hospital():  
-    
+    consultar_hospital()
     cpnj_hospital = input('Informe o CNPJ do Hospital para ser Alterado: ')
     consulta_cnpj = f"SELECT CNPJ FROM HOSPITAL WHERE CNPJ = '{cpnj_hospital}'"
     
@@ -46,7 +46,7 @@ def alterar_hospital():
         print(f"Error: '{err}'")
 
 def alterar_medico():
-
+    consulta_crm()
     crm_medico = input('Informe o CRM do Médico para ser Alterado: ')
     consulta_crm = f"SELECT CRM FROM MEDICO WHERE CRM = '{crm_medico}'"
 
@@ -85,7 +85,7 @@ def alterar_medico():
         print(f"Error: '{err}'")
 
 def alterar_enfermeiro():
-
+    consultar_coren()
     coren_enfermeiro = input('Informe o COREM do Enfermeiro(a) para ser Alterado: ')
     consultar_coren = f"SELECT COREN FROM ENFERMEIRO WHERE COREN = '{coren_enfermeiro}'"
     
@@ -124,7 +124,7 @@ def alterar_enfermeiro():
         print(f"Error: '{err}'")
 
 def alterar_paciente():
-
+    consultar_paciente()
     cpf_do_paciente = input('Informe o CPF do Paciente para ser Alterado: ')
     consulta_cpf = f"SELECT CPF FROM PACIENTE WHERE CPF = '{cpf_do_paciente}'"
 

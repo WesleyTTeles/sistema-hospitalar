@@ -1,7 +1,7 @@
-from cadastrar_dados import *
-from alterar_dados import alterar_dados
-from deletar_dados import deletar_dados
-from relatorio_dados import *
+from src.cadastrar_dados import *
+from src.alterar_dados import alterar_dados
+from src.deletar_dados import deletar_dados
+from src.relatorio_dados import *
 
 def menu_sistema(opcao_menu):
                       

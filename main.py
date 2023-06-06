@@ -1,4 +1,4 @@
-from menu import *
+from src.menu import *
 
 """
 Aluno: Wesley Teixeira Teles

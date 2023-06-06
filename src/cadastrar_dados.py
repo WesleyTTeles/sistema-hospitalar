@@ -2,8 +2,8 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
-from consultar_dados import *
-from conexao_db import conexao_mysql
+from src.consultar_dados import *
+from src.conexao_db import conexao_mysql
 load_dotenv()
 
 def cadastrar_hospital():
@@ -290,7 +290,7 @@ Escolha Qual Opção Deseja Cadastrar:
 3 - Enfermeiro
 4 - Paciente
 5 - Especialidade do Médico
-6 - Novo Número de Telefone do Médico
+6 - Número de Telefone do Médico
 7 - Fechar Programa
 """)) 
 

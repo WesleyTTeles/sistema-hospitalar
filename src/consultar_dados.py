@@ -2,7 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
-from conexao_db import conexao_mysql
+from src.conexao_db import conexao_mysql
 load_dotenv()
 
 def consultar_hospital():

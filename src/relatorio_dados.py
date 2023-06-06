@@ -2,7 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
-from conexao_db import conexao_mysql
+from src.conexao_db import conexao_mysql
 load_dotenv()
 
 def listar_hospital():
@@ -63,7 +63,7 @@ def listar_pacientes():
         print(f'Error: {err}')
 
 def listar_pacientes_aracaju():
-    consulta_cpf = f"SELECT CPF, NOME FROM PACIENTE WHERE CIDADE = 'ARACAJU'"
+    consulta_cpf = f"SELECT CPF, NOME FROM PACIENTE WHERE CIDADE = 'ARACAJU' AND BAIRRO = 'CENTRO'"
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
@@ -71,13 +71,13 @@ def listar_pacientes_aracaju():
         resultados = cursor.fetchall()
     
         if resultados:
-            print(f'Foram Encontrado {len(resultados)} Pacientes que Reside em Aracaju:\n')
+            print(f'Foram Encontrado {len(resultados)} Pacientes que Reside no Centro de Aracaju:\n')
             for resultado in resultados:
                 dado_tratado = str(resultado).replace("(", "").replace(")", "").replace("'", "").replace(",", " | NOME:") 
                 print(f'CPF: {dado_tratado}')
                 conexao.close()
         else:
-            print('Nao Foi Localizado nenhum PACIENTE que Reside em Aracaju Cadastrado.')
+            print('Nao Foi Localizado nenhum PACIENTE que Reside no Centro de Aracaju.')
     except Error as err:
         print(f'Error: {err}')
 

@@ -1,6 +1,6 @@
 from os import getenv
 from dotenv import load_dotenv
-from conexao_db import conexao_mysql
+from src.conexao_db import conexao_mysql
 load_dotenv()
 
 query_hospital = '''

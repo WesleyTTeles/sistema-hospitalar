@@ -2,8 +2,9 @@ from os import getenv
 from dotenv import load_dotenv
 from mysql.connector import Error
 
-from consultar_dados import *
-from conexao_db import conexao_mysql
+from src.consultar_dados import *
+from src.conexao_db import conexao_mysql
+
 load_dotenv()
 
 def deletar_hospital():
