@@ -34,10 +34,9 @@ def cadastrar_hospital():
                 VALUES ('{cpnj}', '{nome}', '{rua}', '{bairro}', '{cidade}', '{cep}', '{telefone}')
             '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Hospital Cadastrado com Sucesso!')
             except Error as err:
                 print(f"Error: '{err}'")
@@ -73,10 +72,9 @@ def cadastrar_medico():
                 VALUES ('{crm}', '{cpf}', '{nome}', '{rua}', '{bairro}', '{cidade}', '{cep}')
             '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Medico Cadastrado com Sucesso!')
             except Error as err:
                 print(f"Error: '{err}'")
@@ -112,10 +110,9 @@ def cadastrar_enfermeiro():
                 VALUES ('{coren}', '{cpf}', '{nome}', '{rua}', '{bairro}', '{cidade}', '{cep}')
             '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Enfermeiro(a) Cadastrado com Sucesso!')
             except Error as err:
                 print(f"Error: '{err}'")
@@ -151,10 +148,9 @@ def cadastrar_paciente():
                 VALUES ('{cpf}','{rg}','{nome}','{rua}','{bairro}','{cidade}','{cep}')
             '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Paciente Cadastrado com Sucesso!')
             except Error as err:
                 print(f"Error: '{err}'")
@@ -177,6 +173,7 @@ def cadastrar_associar_especialidade():
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Especialidade Cadastrado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
@@ -190,12 +187,12 @@ def cadastrar_associar_numero_medico():
         INSERT INTO TELEFONE_MEDICO (TELEFONE, CRM_MEDICO)
         VALUES ('{telefone}', '{crm_do_medico}');
     '''
-
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Número Cadastrado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
@@ -211,12 +208,12 @@ def associar_medico_hospital():
         INSERT INTO HOSPITAL_MEDICO (CNPJ_HOSPITAL, CRM_MEDICO)
         VALUES ('{cnpj_do_hospital}', '{crm_do_medico}');
     '''
-    
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Médico Associado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
@@ -232,12 +229,12 @@ def associar_paciente_medico():
         INSERT INTO PACIENTE_MEDICO (CPF_PACIENTE, CRM_MEDICO)
         VALUES ('{cpf_paciente}', '{crm_do_medico}');
     '''
-
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Paciente Associado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
@@ -253,12 +250,12 @@ def associar_enfermeiro_hospital():
         INSERT INTO HOSPITAL_ENFERMEIRO (CNPJ_HOSPITAL, COREN_ENFERMEIRO)
         VALUES ('{cnpj_do_hospital}', '{coren_enfermeiro}');
     '''
-
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Enfermeiro(a) Associado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")
@@ -274,12 +271,12 @@ def associar_medico_enfermeiro():
         INSERT INTO MEDICO_ENFERMEIRO (CRM_MEDICO, COREN_ENFERMEIRO)
         VALUES ('{crm_medico}', '{coren_enfermeiro}');
     '''
-
     try:
         conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
         cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
+        conexao.close()
         print('Enfermeiro(a) Associado com Sucesso!')
     except Error as err:
         print(f"Error: '{err}'")

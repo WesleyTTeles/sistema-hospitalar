@@ -42,7 +42,7 @@ Digite a Opçao Desejada:
 7 - Associar Enfermeiro(a) à Médico
 8 - Relatórios
 9 - Sair  
-        """))
+"""))
                 print('Obrigado por usar StarMed! Fechando o programa... ..')
         except ValueError:
               print('\n!!!! Opção Inválida Fechando o programa... .. !!!!')

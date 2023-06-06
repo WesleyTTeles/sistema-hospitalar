@@ -19,6 +19,7 @@ def consultar_hospital():
             for resultado in resultados:
                 cnpj_tratado = str(resultado).replace("(", "").replace(")", "").replace("'", "").replace(",", "") 
                 print(f'CNPJ - {cnpj_tratado}')
+                conexao.close()
         else:
             print('Nao Foi Localizado nenhum CNPJ Cadastrado.')
     except Error as err:
@@ -38,6 +39,7 @@ def consultar_medico():
             for resultado in resultados:
                 crm_tratado = str(resultado).replace("(", "").replace(")", "").replace("'", "").replace(",", "") 
                 print(f'CRM - {crm_tratado}')
+                conexao.close()
         else:
             print('Nao Foi Localizado nenhum CRM Cadastrado.')
     except Error as err:
@@ -57,6 +59,7 @@ def consultar_enfermeiro():
             for resultado in resultados:
                 coren_tratado = str(resultado).replace("(", "").replace(")", "").replace("'", "").replace(",", "") 
                 print(f'COREN - {coren_tratado}')
+                conexao.close()
         else:
             print('Nao Foi Localizado nenhum COREN Cadastrado.')
     except Error as err:
@@ -76,6 +79,7 @@ def consultar_paciente():
             for resultado in resultados:
                 cpf_tratado = str(resultado).replace("(", "").replace(")", "").replace("'", "").replace(",", "") 
                 print(f'CPF - {cpf_tratado}')
+                conexao.close()
         else:
             print('Nao Foi Localizado nenhum CPF Cadastrado.')
     except Error as err:

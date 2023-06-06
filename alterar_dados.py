@@ -31,10 +31,9 @@ def alterar_hospital():
                     WHERE CNPJ = '{cpnj_hospital}'
                 '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Dados Atualizados com Sucesso!')
             except Error as err:
                 print(f"Error: '{err}'")
@@ -71,10 +70,9 @@ def alterar_medico():
                     WHERE CRM = '{crm_medico}'
                 '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Dados Atualizados com Sucesso!')
             
             except Error as err:
@@ -111,10 +109,9 @@ def alterar_enfermeiro():
                     WHERE COREN = '{coren_enfermeiro}'
                 '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Dados Atualizados com Sucesso!')
             
             except Error as err:
@@ -152,10 +149,9 @@ def alterar_paciente():
                     WHERE CPF = '{cpf_do_paciente}'
                 '''
             try:
-                conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-                cursor = conexao.cursor()
                 cursor.execute(query)
                 conexao.commit()
+                conexao.close()
                 print('Dados Atualizados com Sucesso!')
             
             except Error as err:
@@ -196,8 +192,6 @@ def alterar_especialidade():
         WHERE ID_ESPECIALIDADE = '{id_especialidade}'
         '''
     try:
-        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-        cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
         conexao.close()
@@ -235,8 +229,6 @@ def alterar_telefone():
         WHERE ID_TELEFONE = '{id_telefone}'
         '''
     try:
-        conexao = conexao_mysql(host_name=getenv("host"), user_name=getenv("db_user"), user_password=getenv("password"), db_name=getenv("db_name"))
-        cursor = conexao.cursor()
         cursor.execute(query)
         conexao.commit()
         conexao.close()
